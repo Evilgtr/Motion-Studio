@@ -1,0 +1,31 @@
+# Dependencies and downloaded portable runtime
+node_modules/
+/.runtime/
+
+# Private projects, uploaded media, and generated exports
+/projects/
+/assets/
+/exports/*
+!/exports/README.txt
+
+# Local environment settings (keep the shareable example)
+.env
+.env.*
+!.env.example
+
+# Logs, caches, and test output
+*.log
+.npm/
+.cache/
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+# Editor and operating-system files
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini

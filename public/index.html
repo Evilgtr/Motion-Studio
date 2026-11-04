@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mezofill Motion Studio</title>
+    <link rel="stylesheet" href="/studio.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">M<span>•</span></span>
+        <div>
+          <b>استودیوی موشن مزوفیل</b><small>MEZOFILL MOTION STUDIO</small>
+        </div>
+      </div>
+      <div class="project-heading">
+        <input id="project-name" aria-label="نام پروژه" maxlength="120" /><span
+          id="save-state"
+          >در حال بارگذاری…</span
+        >
+      </div>
+      <nav class="top-actions">
+        <button id="open-projects">پروژه‌ها</button
+        ><button id="new-project">نسخهٔ جدید</button
+        ><button
+          id="backup-project"
+          title="پشتیبان قابل انتقال همراه عکس و فونت"
+        >
+          پشتیبان</button
+        ><button id="render-button" class="primary">
+          خروجی MP4 <span>↗</span>
+        </button>
+      </nav>
+    </header>
+    <main class="workspace">
+      <aside class="story-panel panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">STORYBOARD</span>
+            <h2>صحنه‌های پروژه</h2>
+          </div>
+          <span class="badge" id="scene-count">۶</span>
+        </div>
+        <div id="scene-list" class="scene-list"></div>
+        <button id="add-scene" class="add-scene">＋ افزودن صحنه</button>
+        <div class="story-footer">
+          <div><span class="status-dot"></span> محیط محلی · بدون صدا</div>
+          <small>عکس و فونت‌ها روی همین سیستم می‌مانند.</small
+          ><button id="help-button" class="text-button">راهنمای سریع ↗</button>
+        </div>
+      </aside>
+      <section class="preview-panel">
+        <div class="preview-toolbar">
+          <div><span class="status-dot"></span> پیش‌نمایش زنده</div>
+          <div>
+            <label class="inline-check"
+              ><input type="checkbox" id="safe-area" /> حاشیه امن</label
+            ><button id="fullscreen" class="icon-button" title="تمام‌صفحه">
+              ⛶
+            </button>
+          </div>
+        </div>
+        <div class="preview-area" id="preview-area">
+          <div class="preview-shell" id="preview-shell">
+            <iframe
+              src="/player.html"
+              id="preview"
+              title="پیش‌نمایش ویدیو"
+            ></iframe>
+          </div>
+          <div class="preview-meta">
+            <span id="dimensions"></span><span>پیش‌نمایش مقیاس‌شده</span>
+          </div>
+        </div>
+        <div class="transport">
+          <div class="playback">
+            <button id="restart" title="از ابتدا">↺</button
+            ><button id="play" class="play-button" aria-label="پخش">▶</button
+            ><output id="clock" dir="ltr">00:00 / 00:20</output>
+            <div class="history-buttons">
+              <button id="undo" title="واگرد Ctrl+Z">↶</button
+              ><button id="redo" title="بازانجام Ctrl+Y">↷</button>
+            </div>
+          </div>
+          <input
+            type="range"
+            id="scrub"
+            min="0"
+            max="20"
+            step="0.01"
+            value="0"
+            aria-label="زمان پیش‌نمایش"
+          />
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </section>
+      <aside class="inspector panel">
+        <div class="inspector-tabs">
+          <button data-tab="scene" class="active">صحنه</button
+          ><button data-tab="theme">ظاهر</button
+          ><button data-tab="output">خروجی</button>
+        </div>
+        <div id="inspector-content"></div>
+      </aside>
+    </main>
+    <div id="toast" role="status"></div>
+    <dialog id="projects-dialog">
+      <div class="dialog-heading">
+        <h2>پروژه‌های من</h2>
+        <button data-close>×</button>
+      </div>
+      <p class="muted">ذخیرهٔ خودکار در پوشهٔ projects</p>
+      <div id="projects-list"></div>
+      <div class="dialog-actions">
+        <button id="load-backup">بازکردن پشتیبان</button
+        ><button id="reset-demo">پروژهٔ نمونه</button>
+      </div>
+    </dialog>
+    <dialog id="render-dialog">
+      <div class="dialog-heading">
+        <h2>خروجی ویدیو</h2>
+        <button data-close>×</button>
+      </div>
+      <div id="export-summary" class="export-summary"></div>
+      <div id="render-progress" hidden>
+        <div class="progress-track"><div id="progress-bar"></div></div>
+        <div class="progress-row">
+          <b id="progress-label">آماده‌سازی…</b
+          ><span id="progress-value">۰٪</span>
+        </div>
+        <p id="progress-detail" class="muted"></p>
+      </div>
+      <p id="render-error" class="error" hidden></p>
+      <div id="render-result" hidden>
+        <video controls id="result-video"></video
+        ><a id="download-video" class="primary button" download>دانلود MP4</a>
+        <p class="muted">فایل در پوشهٔ exports هم ذخیره شده است.</p>
+      </div>
+      <p class="muted" id="render-note">
+        رندر فریم‌به‌فریم است و ممکن است چند دقیقه زمان ببرد. پنجرهٔ اجرای
+        برنامه را باز نگه دارید.
+      </p>
+      <div class="dialog-actions">
+        <button id="cancel-render" hidden>لغو رندر</button
+        ><button id="start-render" class="primary">شروع رندر</button>
+      </div>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>از عکس محصول تا ویدیو</h2>
+        <button data-close>×</button>
+      </div>
+      <ol class="help-list">
+        <li>«نسخهٔ جدید» یک کپی مستقل از پروژهٔ فعلی می‌سازد.</li>
+        <li>صحنه را از ستون راست انتخاب کن؛ عکس و متن و حرکت را تغییر بده.</li>
+        <li>
+          برای فایل‌های موجود در پوشهٔ assets از «بازخوانی فایل‌ها» استفاده کن.
+        </li>
+        <li>در «ظاهر»، رنگ و فونت و جلوه‌های پس‌زمینه را تنظیم کن.</li>
+        <li>در «خروجی»، ابعاد و نرخ فریم را تعیین کن و MP4 بگیر.</li>
+        <li>
+          «پشتیبان» یک فایل قابل انتقال، همراه تمام عکس‌ها و فونت‌ها می‌سازد.
+        </li>
+      </ol>
+      <p class="muted">
+        کلید فاصله: پخش/توقف · Ctrl+S: ذخیره · Ctrl+Z: واگرد<br />عکس‌ها باید از
+        قبل آماده باشند؛ حذف پس‌زمینه خودکار انجام نمی‌شود.
+      </p>
+    </dialog>
+    <input type="file" id="asset-file" hidden /><input
+      type="file"
+      id="backup-file"
+      accept=".json,.motion.json"
+      hidden
+    />
+    <script src="/model.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

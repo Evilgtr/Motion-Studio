@@ -1,0 +1,25 @@
+{
+  "name": "mezofill-motion-studio",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Offline, template-based Persian product motion studio",
+  "scripts": {
+    "start": "node server.js",
+    "doctor": "node scripts/doctor.js",
+    "test": "node --test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "install:browser": "node scripts/install-browser.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "ffmpeg-static": "5.3.0",
+    "playwright": "1.62.1"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
