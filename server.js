@@ -583,7 +583,7 @@ function start(attempt = 0) {
   });
   server.listen(port, "127.0.0.1", () => {
     console.log(
-      `\nMezofill Motion Studio\nhttp://127.0.0.1:${port}\nKeep this window open. Ctrl+C to stop.\n`,
+      `\nMotion Studio\nhttp://127.0.0.1:${port}\nKeep this window open. Ctrl+C to stop.\n`,
     );
     if (!process.env.STUDIO_NO_OPEN) openBrowser(`http://127.0.0.1:${port}`);
   });

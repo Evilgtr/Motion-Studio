@@ -89,7 +89,7 @@ function save() {
         await api("/api/projects", { method: "POST", data });
         if (rev === revision)
           $("#save-state").textContent = "ذخیره شد · روی همین سیستم";
-        localStorage.setItem("mezofill-last-project", data.id);
+        localStorage.setItem("motion-studio-last-project", data.id);
       } catch (err) {
         if (rev === revision)
           $("#save-state").textContent = "ذخیره نشد؛ تنظیمات را بررسی کن";
@@ -698,8 +698,12 @@ async function init() {
     token = conf.token;
     assetList = await (await api("/api/assets")).json();
     let p = conf.defaultProject;
-    const id = localStorage.getItem("mezofill-last-project");
+    const id =
+      localStorage.getItem("motion-studio-last-project") ||
+      localStorage.getItem("mezofill-last-project");
     if (id) {
+      localStorage.setItem("motion-studio-last-project", id);
+      localStorage.removeItem("mezofill-last-project");
       try {
         p = await (await api("/api/projects/" + id)).json();
       } catch {}

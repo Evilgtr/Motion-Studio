@@ -3,7 +3,7 @@ const { spawnSync } = require("node:child_process");
 const { browserOptions, ffmpegPath } = require("./runtime");
 (async () => {
   let failed = false;
-  console.log("Mezofill Motion Studio - System Check\n");
+  console.log("Motion Studio - System Check\n");
   console.log("Node:", process.version);
   if (Number(process.versions.node.split(".")[0]) < 22) {
     console.error("Node 22+ is required.");

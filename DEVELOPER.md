@@ -1,4 +1,4 @@
-# Mezofill Motion Studio 1.0
+# Motion Studio 1.0
 
 Local template-based product motion editor. No remote API, telemetry, CDN assets, AI generation, audio processing, or database. Windows x64 launchers install a portable Node 24 runtime, locked npm dependencies, FFmpeg, and Playwright Chromium. After setup, all operations run locally.
 

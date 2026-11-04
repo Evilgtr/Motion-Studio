@@ -7,7 +7,7 @@ $runtime = Join-Path $root '.runtime'
 New-Item -ItemType Directory -Force -Path $runtime | Out-Null
 try {
     if (-not [Environment]::Is64BitOperatingSystem) { throw 'Windows 64-bit is required.' }
-    Write-Host 'Mezofill Motion Studio - Initial setup' -ForegroundColor Cyan
+    Write-Host 'Motion Studio - Initial setup' -ForegroundColor Cyan
     Write-Host 'Internet is required for this step only. Keep this window open.'
     $nodeDir = Join-Path $runtime 'node'
     $node = Join-Path $nodeDir 'node.exe'

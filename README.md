@@ -1,6 +1,8 @@
-# Mezofill Motion Studio
+# Motion Studio
 
 ویرایشگر محلی ساخت موشن محصول با رابط فارسی و راست‌به‌چپ. صحنه‌ها، نوشته‌ها، تصویرها، فونت‌ها و حرکت را تنظیم کنید و خروجی بگیرید؛ بدون حساب کاربری یا سرویس ابری.
+
+> **وضعیت توسعه:** این برنامه همچنان در حال توسعه است؛ قابلیت‌ها و رابط کاربری ممکن است در به‌روزرسانی‌های آینده تغییر کنند.
 
 **اگر این پروژه به شما ایده داد یا از آن در سیستم خودتان استفاده کردید، با زدن ⭐ Star از آن حمایت کنید.** ستاره‌دادن کمک می‌کند افراد بیشتری پروژه را پیدا کنند و به ادامهٔ توسعه‌اش انگیزه می‌دهد.
 
@@ -68,7 +70,9 @@ npm run doctor
 
 ## English
 
-Mezofill Motion Studio is a local product-motion editor with a Persian, right-to-left interface. Arrange scenes, text, images, fonts, and motion, then export an MP4 video, standalone HTML, or portable backup. It runs on your computer and does not require an account or hosted API.
+Motion Studio is a local product-motion editor with a Persian, right-to-left interface. Arrange scenes, text, images, fonts, and motion, then export an MP4 video, standalone HTML, or portable backup. It runs on your computer and does not require an account or hosted API.
+
+> **Development status:** This application is still under active development; features and the user interface may change in future updates.
 
 **If this project gave you an idea or you use it in your own system, please support it with a ⭐ Star.** It helps others discover the project and encourages further development.
 
